@@ -1,10 +1,11 @@
 "use client";
+import dynamic from 'next/dynamic';
 import { cn } from "@/app/lib/utils";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export const CanvasRevealEffect = ({
+const CanvasRevealEffect = dynamic(() => Promise.resolve(({
   animationSpeed = 0.4,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
   colors = [[0, 255, 255]],
@@ -46,7 +47,9 @@ export const CanvasRevealEffect = ({
       )}
     </div>
   );
-};
+}), { ssr: false });
+
+export { CanvasRevealEffect };
 
 interface DotMatrixProps {
   colors?: number[][];
@@ -208,53 +211,53 @@ const ShaderMaterial = ({
     timeLocation.value = timestamp;
   });
 
-  const getUniforms = () => {
-    const preparedUniforms: Record<string, { value: THREE.Vector2 | THREE.Vector3 | number | THREE.Vector3[] | number[]; type?: string }> = {};
-
-    for (const uniformName in uniforms) {
-      const uniform = uniforms[uniformName];
-
-      switch (uniform.type) {
-        case "uniform1f":
-          preparedUniforms[uniformName] = { value: uniform.value as number, type: "1f" };
-          break;
-        case "uniform3f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector3().fromArray(uniform.value as number[]),
-            type: "3f",
-          };
-          break;
-        case "uniform1fv":
-          preparedUniforms[uniformName] = { value: uniform.value as number[], type: "1fv" };
-          break;
-        case "uniform3fv":
-          preparedUniforms[uniformName] = {
-            value: (uniform.value as number[][]).map((v) =>
-              new THREE.Vector3().fromArray(v)
-            ),
-            type: "3fv",
-          };
-          break;
-        case "uniform2f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector2().fromArray(uniform.value as number[]),
-            type: "2f",
-          };
-          break;
-        default:
-          console.error(`Invalid uniform type for '${uniformName}'.`);
-          break;
-      }
-    }
-
-    preparedUniforms["u_time"] = { value: 0, type: "1f" };
-    preparedUniforms["u_resolution"] = {
-      value: new THREE.Vector2(size.width * 2, size.height * 2),
-    };
-    return preparedUniforms;
-  };
-
   const material = useMemo(() => {
+    const getUniforms = () => {
+      const preparedUniforms: Record<string, { value: THREE.Vector2 | THREE.Vector3 | number | THREE.Vector3[] | number[]; type?: string }> = {};
+
+      for (const uniformName in uniforms) {
+        const uniform = uniforms[uniformName];
+
+        switch (uniform.type) {
+          case "uniform1f":
+            preparedUniforms[uniformName] = { value: uniform.value as number, type: "1f" };
+            break;
+          case "uniform3f":
+            preparedUniforms[uniformName] = {
+              value: new THREE.Vector3().fromArray(uniform.value as number[]),
+              type: "3f",
+            };
+            break;
+          case "uniform1fv":
+            preparedUniforms[uniformName] = { value: uniform.value as number[], type: "1fv" };
+            break;
+          case "uniform3fv":
+            preparedUniforms[uniformName] = {
+              value: (uniform.value as number[][]).map((v) =>
+                new THREE.Vector3().fromArray(v)
+              ),
+              type: "3fv",
+            };
+            break;
+          case "uniform2f":
+            preparedUniforms[uniformName] = {
+              value: new THREE.Vector2().fromArray(uniform.value as number[]),
+              type: "2f",
+            };
+            break;
+          default:
+            console.error(`Invalid uniform type for '${uniformName}'.`);
+            break;
+        }
+      }
+
+      preparedUniforms["u_time"] = { value: 0, type: "1f" };
+      preparedUniforms["u_resolution"] = {
+        value: new THREE.Vector2(size.width * 2, size.height * 2),
+      };
+      return preparedUniforms;
+    };
+
     const materialObject = new THREE.ShaderMaterial({
       vertexShader: `
       precision mediump float;
@@ -278,7 +281,7 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [source, getUniforms]);
+  }, [source, uniforms, size.width, size.height]);
 
   return (
     <mesh ref={ref}>
