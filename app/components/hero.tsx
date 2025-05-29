@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { Spotlight } from "./ui/spotlight";
 import { TextGenerateEffect } from "./ui/Textgenerate";
 import Buttonmagic from "./ui/Buttonmagic";
@@ -31,10 +32,13 @@ function Hero() {
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <div className="relative group">
                 <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-pink-500 to-indigo-500 blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-                <img
+                <Image
+                  className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover rounded-full border-4 border-white/20 shadow-lg"
                   src="https://avatars.githubusercontent.com/u/132159855?s=400&u=0901b4fc467f3238f1487f5f0ac73dc1ae401665&v=4"
                   alt="Abhishek Yadav Profile"
-                  className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover rounded-full border-4 border-white/20 shadow-lg"
+                  width={320}
+                  height={320}
+                  priority
                 />
               </div>
             </div>

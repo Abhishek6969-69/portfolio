@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 
 import React, { useRef, useState } from "react";
+import Image from "next/image";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -193,7 +194,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -234,12 +234,12 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
+      <Image
         src="https://assets.aceternity.com/logo-dark.png"
         alt="logo"
         width={40}
         height={40}
-         className=" rounded-full"
+        className="rounded-full"
       />
       <span className="font-medium text-black dark:text-white">Startup</span>
     </a>
@@ -259,12 +259,12 @@ export const NavbarButton = ({
         rel="noopener noreferrer"
         className="relative cursor-pointer hover:-translate-y-0.5 transition duration-200"
       >
-        <img
+        <Image
           src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           alt="GitHub"
           width={40}
           height={40}
-          className=" rounded-full border-1"
+          className="rounded-full border-1"
         />
       </a>
       <a
@@ -273,7 +273,7 @@ export const NavbarButton = ({
         rel="noopener noreferrer"
         className="relative cursor-pointer hover:-translate-y-0.5 transition duration-200"
       >
-        <img
+        <Image
           src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg"
           alt="LinkedIn"
           width={30}
