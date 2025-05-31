@@ -38,7 +38,7 @@ export const TextGenerateEffect = ({
             <motion.span
               key={word + idx}
               className={cn(
-                idx > 1 ? "text-purple-300 px-2" : "dark:text-white text-black px-2",
+                idx > 1 ? "text-purple-300 px-2" : "text-white px-2",
                 "inline-block opacity-0"
               )}
               style={{
@@ -56,7 +56,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="mt-2">
-        <div className="dark:text-white uppercase text-black  sm:text-3xl md:text-4xl lg:text-5xl max-w-full flex items-center justify-center gap-6 sm:max-w-lg md:max-w-2xl lg:max-w-4xl   text-center leading-snug">
+        <div className="text-white uppercase sm:text-3xl md:text-4xl lg:text-5xl max-w-full flex items-center justify-center gap-6 sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-center leading-snug">
           {renderWords()}
         </div>
       </div>

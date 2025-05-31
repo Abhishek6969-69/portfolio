@@ -142,7 +142,7 @@ export const BentoGridItem = ({
               {stack.category.map((tech) => (
                 <span
                   key={tech.name}
-                  className="flex items-center justify-center gap-2 py-2 px-3 sm:px-4 text-xs sm:text-sm opacity-80 rounded-lg bg-neutral-100 dark:bg-neutral-800 w-full text-center"
+                  className="flex items-center justify-center gap-2 py-2 px-3 sm:px-4 text-xs sm:text-sm opacity-80 rounded-lg bg-[#04071D] border border-white/10 text-white w-full text-center"
                 >
                   {tech.icon && (
                     <Image

@@ -10,11 +10,11 @@ const World = dynamic(() => import("../ui/globe").then((m) => m.World), {
 export function GlobeDemo() {
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: "#04071D",
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: "#04071D",
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: "#04071D",
     emissiveIntensity: 0.1,
     shininess: 0.9,
     polygonColor: "rgba(255,255,255,0.7)",
@@ -398,7 +398,8 @@ export function GlobeDemo() {
     <div className="flex justify-center items-center ">
       <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-96 px-4 ">
        
-        <div className="absolute w-full bottom-0   inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
+
+        <div className="absolute w-full bottom-0   inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none  bg-[#04071D]  z-40" />
         <div className="absolute w-full    h-72 md:h-full z-10">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
