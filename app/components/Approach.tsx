@@ -15,7 +15,7 @@ export function Approach() {
       <div className="  flex justify-center">
         <h1 className=" text-4xl md:text-4xl text-purple-500 lg:text-6xl  ">My Approach</h1>
         </div>
-    <div className="py-8 sm:py-12 md:py-16 lg:py-20 flex flex-col lg:flex-row items-center justify-center bg-white dark:bg-black w-full gap-4 sm:gap-6 md:gap-8 mx-auto px-4 sm:px-6 md:px-8">
+    <div className="py-8 sm:py-12 md:py-16 lg:py-20 flex flex-col lg:flex-row items-center justify-center  dark:bg-black w-full gap-4 sm:gap-6 md:gap-8 mx-auto px-4 sm:px-6 md:px-8">
     
 
       <Card
@@ -84,10 +84,10 @@ const Card = ({
       onClick={handleToggle}
       className="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2] w-full max-w-[90vw] sm:max-w-[400px] mx-auto p-4 sm:p-6 relative h-[20rem] sm:h-[24rem] md:h-[28rem] lg:h-[30rem] cursor-pointer"
     >
-      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -top-2 -left-2 dark:text-white text-black" />
-      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -bottom-2 -left-2 dark:text-white text-black" />
-      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -top-2 -right-2 dark:text-white text-black" />
-      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -bottom-2 -right-2 dark:text-white text-black" />
+      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -top-2 -left-2  text-black" />
+      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -bottom-2 -left-2  text-black" />
+      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -top-2 -right-2  text-black" />
+      <Icon className="absolute h-5 w-5 sm:h-6 sm:w-6 -bottom-2 -right-2  text-black" />
 
       <AnimatePresence>
         {hovered && (
@@ -108,14 +108,14 @@ const Card = ({
         </div>
         <div className="flex flex-col items-center justify-center">
           <h2
-            className={`dark:text-white text-base sm:text-lg md:text-xl ${
+            className={` text-base sm:text-lg md:text-xl ${
               hovered ? "opacity-100" : "opacity-0"
             } sm:group-hover/canvas-card:opacity-100 relative z-20 text-black mt-4 font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200`}
           >
             {title}
           </h2>
           <p
-            className={`dark:text-white text-sm sm:text-base ${
+            className={` text-sm sm:text-base ${
               hovered ? "opacity-100" : "opacity-0"
             } sm:group-hover/canvas-card:opacity-100 relative z-20 text-black mt-2 font-medium group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200`}
           >
